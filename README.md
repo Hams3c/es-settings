@@ -45,7 +45,7 @@ Follow this guide: https://www.elastic.co/guide/en/siem/guide/current/install-si
 ```
   # ES info
   output.elasticsearch.hosts: "${ES_HOST}"
-  output.elasticsearch.protocol: "https"
+  output.elasticsearch.protocol: "http"
   output.elasticsearch.username: "${ES_USER}"
   output.elasticsearch.password: "${ES_PASSWD}"
 
@@ -61,7 +61,7 @@ Follow this guide: https://www.elastic.co/guide/en/siem/guide/current/install-si
 ```
   # ES info
   output.elasticsearch.hosts: "${ES_HOST}"
-  output.elasticsearch.protocol: "https"
+  output.elasticsearch.protocol: "http"
   output.elasticsearch.username: "${ES_USER}"
   output.elasticsearch.password: "${ES_PASSWD}"
 
@@ -75,7 +75,7 @@ Follow this guide: https://www.elastic.co/guide/en/siem/guide/current/install-si
 ```
   # ES info
   output.elasticsearch.hosts: "${ES_HOST}"
-  output.elasticsearch.protocol: "https"
+  output.elasticsearch.protocol: "http"
   output.elasticsearch.username: "${ES_USER}"
   output.elasticsearch.password: "${ES_PASSWD}"
 
@@ -105,7 +105,8 @@ output {
   if [type] == "firewall" {
     elasticsearch {
       id => "pfelk"
-      hosts => ["https://{$ES_HOST}:9200"]
+      hosts => ["http://{$ES_HOST}:9200"]
+      # make sure this account has the correct permissions https://discuss.elastic.co/t/issues-sending-monitoring-data-from-logstash-to-elasticsearch/215103/8
       user => "logstash_system"
       password => "mypasswod"
       index => "pfelk-%{+YYYY.MM.dd}"
@@ -162,8 +163,8 @@ systemctl status --no-pager logstash
 Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Scope LocalMachine
 ```
 2. Download the agent `https://www.elastic.co/downloads/elastic-agent`
-3. Add integration `https://${ES_HOST}:5601/app/ingestManager#/integrations`
-4. Make sure to update the code to use `https`
+3. Add integration `http://${ES_HOST}:5601/app/ingestManager#/integrations`
+4. Make sure to update the code to use `http`
 5. Run with powershell as administrator
 
 ```
