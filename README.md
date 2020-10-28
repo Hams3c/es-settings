@@ -13,25 +13,26 @@ export ES_PASSWD=mypass
 ## ElasticSearch
 1. Follow these instructions: https://www.elastic.co/guide/en/elasticsearch/reference/current/install-elasticsearch.html
 2. Setup xpack security module: https://www.elastic.co/guide/en/elasticsearch/reference/current/configuring-security.html
-  * setup a keystore if you want, not using it since this is a lab
-3. Also need to setup TLS: https://www.elastic.co/guide/en/elasticsearch/reference/current/ssl-tls.html
-4. Setup a PKCS key for encrypted comms: https://www.elastic.co/guide/en/kibana/7.9/configuring-tls.html.  Just use `bin/elasticsearch-certutil http`
+  * (optional) setup a keystore if you want, not using it since this is a lab
+3. (optional) Also need to setup TLS: https://www.elastic.co/guide/en/elasticsearch/reference/current/ssl-tls.html
+4. (optional) Setup a PKCS key for encrypted comms: https://www.elastic.co/guide/en/kibana/7.9/configuring-tls.html.  Just use `bin/elasticsearch-certutil http`
 
 
 DON'T START ANY OF THE FOLLOWING MODULES
 
 ## Kibana
-1. Setup security: https://www.elastic.co/guide/en/kibana/7.9/using-kibana-with-security.html
+1. Install Kibana: `apt install kibana`
+2. Setup security: https://www.elastic.co/guide/en/kibana/7.9/using-kibana-with-security.html
   * setup a keystore if you want, not using it since this is a lab
-2. Setup TLS: https://www.elastic.co/guide/en/elasticsearch/reference/current/ssl-tls.html
-3. Setup a PKCS key for encrypted comms: https://www.elastic.co/guide/en/kibana/7.9/configuring-tls.html.  Use the `http.p12` cert from before
+3. (optional) Setup TLS: https://www.elastic.co/guide/en/elasticsearch/reference/current/ssl-tls.html
+4. (optional) Setup a PKCS key for encrypted comms: https://www.elastic.co/guide/en/kibana/7.9/configuring-tls.html.  Use the `http.p12` cert from before
 
 ```
 server.ssl.keystore.path: "${ES_CONFIG}/${ES_HTTPCERT}"
 elasticsearch.ssl.certificateAuthorities: ["${ES_CONFIG}/${ES_KEYSTORE}"]
 ```
 
-4. Add users to group `elasticsearch`
+4. Add kibana user to group `elasticsearch`
 ```
 usermod -a -G elasticsearch kibana
 ```
