@@ -84,7 +84,7 @@ Follow this guide: https://www.elastic.co/guide/en/siem/guide/current/install-si
   ssl.certificate_authorities: ["${ES_CONFIG}/${ES_KEYSTORE}"]
 ```
 
-## SSL/TLS cert and key fixing
+## SSL/TLS cert and key fixing (optional)
 Change file permissions
 
 ```
