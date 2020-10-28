@@ -27,7 +27,7 @@ DON'T START ANY OF THE FOLLOWING MODULES
 * setup a keystore if you want, not using it since this is a lab
 3. (optional) Setup TLS: https://www.elastic.co/guide/en/elasticsearch/reference/current/ssl-tls.html
 4. (optional) Setup a PKCS key for encrypted comms: https://www.elastic.co/guide/en/kibana/7.9/configuring-tls.html.  Use the `http.p12` cert from before
-5. If you want Kibana to be reachable by enother computer, you'll need to update `server.host` in `/etc/kibana/kibana.yml` to be your IPv4 addr.
+5. If you want Kibana to be reachable by another computer, you'll need to update `server.host` in `/etc/kibana/kibana.yml` to be the IPv4 addr of the machine you on which you installed Kibana.
 
 ```
 server.ssl.keystore.path: "${ES_CONFIG}/${ES_HTTPCERT}"
